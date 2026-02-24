@@ -7,7 +7,36 @@ const crearUsuario = async (data) => {
 const listarUsuarios = async () => {
     return await Usuario.findAll();
 };
+
+//Obtener por el ID 
+const obtenerUsuarioPorId = async (id) => {
+    return await Usuario.findByPk(id);
+}
+//ACTUALIZAR
+const actualizarUsuario = async(id, data)=>{
+    const usuario = await Usuario.findByPk(id);
+    if(!usuario){
+        return null;
+    }
+    await usuario.update(data);
+    return usuario;
+}
+
+//Eliminar
+const eliminarUsuario = async(id)=>{
+    const usuario = await Usuario.findByPk(id);
+    if(!usuario){
+        return null;
+    }
+    await usuario.destroy();
+    return true;
+}
+
+
 module.exports = {
     crearUsuario,
-    listarUsuarios
+    listarUsuarios,
+    obtenerUsuarioPorId,
+    actualizarUsuario,
+    eliminarUsuario
 };
