@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const pais = require('./pais.model');
+const Pais = require('./pais.model');
 const Departamento = sequelize.define('Departamento', {
     id:{
         type: DataTypes.INTEGER,
@@ -26,7 +26,7 @@ key:'id'
     timestamps: true,
     indexes:[
         {unique:true,
-            fields:['nombre,paisId']
+            fields:['nombre','paisId']
         }
     ]
 });
